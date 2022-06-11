@@ -7,7 +7,9 @@ const path    = require('path')
 
 const app = express()
 
-
+if (app.get('env') == 'development'){
+     require('dotenv').config()
+    }
 app.use(express.static(path.resolve(__dirname, 'build')));
 
 
