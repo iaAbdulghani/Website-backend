@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const sendGrid = require('@sendGrid/mail')
-const port = process.env.PORT || 3030;
 const path    = require('path')
 
 const app = express()
@@ -63,4 +62,6 @@ app.post('/api/email', (req,res)=>{
     })
  })
 
-app.listen(port,'0.0.0.0')
+ app.listen(process.env.PORT || 3030, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
